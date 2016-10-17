@@ -1,6 +1,9 @@
 #include "cuda_runtime.h"
 #include "curand.h"
 #include "cublas_v2.h"
+#include "math.h"
+//math_constants.h
+//#include "math_constants.h"
 
 extern "C" {
 #include "maxpool_layer.h"

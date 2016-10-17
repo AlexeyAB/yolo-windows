@@ -1,6 +1,7 @@
 #include "cuda_runtime.h"
 #include "curand.h"
 #include "cublas_v2.h"
+#include "math.h"
 
 extern "C" {
 #include "softmax_layer.h"
