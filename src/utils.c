@@ -3,11 +3,13 @@
 #include <string.h>
 #include <math.h>
 #include <assert.h>
-#include <unistd.h>
+#include "unistd.h"
 #include <float.h>
 #include <limits.h>
 
 #include "utils.h"
+
+#pragma warning(disable: 4996)
 
 void sorta_shuffle(void *arr, size_t n, size_t size, size_t sections)
 {
