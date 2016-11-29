@@ -16,9 +16,9 @@ Which is forked from Linux-version: https://github.com/pjreddie/darknet
   - With OpenCV will show image or video detection in window and store result to test_dnn_out.avi
 
 ##### Pre-trained models for different cfg-files can be downloaded from (smaller -> faster & lower quality):
-* `yolo.cfg` (1 GB) - require 4 GB GPU-RAM: http://pjreddie.com/media/files/yolo.weights
-* `yolo-small.cfg` (359 MB) - require 2 GB GPU-RAM: http://pjreddie.com/media/files/yolo-small.weights
-* `yolo-tiny.cfg` (172 MB) - require 1 GB GPU-RAM: http://pjreddie.com/media/files/yolo-tiny.weights
+* `yolo.cfg` (1 GB) - require 4 GB GPU-RAM: https://drive.google.com/open?id=0BwRgzHpNbsWBLU04Znc4U1BMZ0k
+* `yolo-small.cfg` (359 MB) - require 2 GB GPU-RAM: https://drive.google.com/open?id=0BwRgzHpNbsWBQzlHeVpZRnhlY2M
+* `yolo-tiny.cfg` (172 MB) - require 1 GB GPU-RAM: https://drive.google.com/open?id=0BwRgzHpNbsWBQlMxcXNBMWtkaFk
 
 ##### Examples of results:
 
@@ -53,6 +53,33 @@ darknet.exe yolo demo yolo.cfg yolo.weights http://192.168.0.80:8080/video?dummy
 Windows (Visual Studio) Support
 Now yolo supports windows with Visual Studio. Just change the include directories / library directories to your own ones, 
 and compile the codes with X64 Release mode. You may need pthread-windows while compiling and linking
+
+##### How to train yourself:
+
+To training for your 20 objects download pre-trained convolutional layers:
+
+* darknet.conv.weights: https://drive.google.com/open?id=0BwRgzHpNbsWBUXdmdXdaa1dDU2s
+* extraction.conv.weights: https://drive.google.com/open?id=0BwRgzHpNbsWBaHR1NjZ2T3FKT1E
+
+Then use the following command lines:
+
+* For tiny-model: `darknet yolo train yolo-tiny.cfg darknet.conv.weights`
+* For small-model: `darknet yolo train yolo-small.cfg extraction.conv.weights`
+* For full-model: `darknet yolo train yolo.cfg extraction.conv.weights`
+
+To train for a different number of objects (not 20) or for different number of sides (not 7), you should change your .cfg-file 3 lines:
+
+* `output= (5 x 2 + C) x S x S`
+* `classes= C`
+* `side= S`
+
+Where: 
+* C = number of objects (by default 20)
+* S = number of sides (by default 7)
+
+
+
+More details: http://pjreddie.com/darknet/yolov1/
 
 ### How to compile:
 
