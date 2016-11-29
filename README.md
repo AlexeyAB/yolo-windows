@@ -9,7 +9,7 @@ Which is forked from Linux-version: https://github.com/pjreddie/darknet
 
 ##### Requires: 
 * **MS Visual Studio 2013 (v120)**
-* **CUDA 6.5 for Windows x64**: https://developer.nvidia.com/cuda-toolkit-65
+* **CUDA 7.5 for Windows x64**: https://developer.nvidia.com/cuda-75-downloads-archive
 * **OpenCV 2.4.9**: https://sourceforge.net/projects/opencvlibrary/files/opencv-win/2.4.9/opencv-2.4.9.exe/download
   - To compile without OpenCV - remove define OPENCV from: Visual Studio->Project->Properties->C/C++->Preprocessor
   - To compile with different OpenCV version - change in file yolo_kernels.cu each string **#pragma comment(lib, "opencv_core249.lib")** from 249 to required version.
