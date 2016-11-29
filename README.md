@@ -53,3 +53,44 @@ darknet.exe yolo demo yolo.cfg yolo.weights http://192.168.0.80:8080/video?dummy
 Windows (Visual Studio) Support
 Now yolo supports windows with Visual Studio. Just change the include directories / library directories to your own ones, 
 and compile the codes with X64 Release mode. You may need pthread-windows while compiling and linking
+
+### How to compile:
+
+1. If you have CUDA 7.5, OpenCV 2.4.9 (C:\opencv_2.4.9) and MSVS 2013 (or 2015) then start MSVS, open `yolo-windows\build\darknet\darknet.sln` and do the: Build -> Build darknet
+
+2. If you have other version of CUDA (not 7.5) then open `yolo-windows\build\darknet\darknet\darknet.vcxproj` by using Notepad, find 2 places with "CUDA 7.5" and change it to your CUDA-version, then do step 1
+
+3. If you have other version of OpenCV 2.4.x (not 2.4.9) then you should change pathes after `\darknet.sln` is opened
+
+  3.1 (right click on project) -> properties  -> C/C++ -> General -> Additional Include Directories
+  
+  3.2 (right click on project) -> properties  -> Linker -> General -> Additional Library Directories
+
+4. If you have other version of OpenCV 3.x (not 2.4.x) then you should change many places in code by yourself.
+
+### How to compile (custom):
+
+Also, you can to create your own `darknet.sln` & `darknet.vcxproj`, this example for CUDA 7.5 and OpenCV 2.4.9
+
+Then add to your created project:
+- (right click on project) -> properties  -> C/C++ -> General -> Additional Include Directories, put here: 
+
+`C:\opencv_2.4.9\opencv\build\include;..\..\..\3rdparty\include;%(AdditionalIncludeDirectories);$(CudaToolkitIncludeDir)`
+- right click on project -> Build dependecies -> Build Customizations -> set check on CUDA 7.5 or what version you have - for example as here: http://devblogs.nvidia.com/parallelforall/wp-content/uploads/2015/01/VS2013-R-5.jpg
+- add to project all .c & .cu files from yolo-windows\src
+-  (right click on project) -> properties  -> Linker -> General -> Additional Library Directories, put here: 
+
+`C:\opencv_2.4.9\opencv\build\x64\vc12\lib;$(CUDA_PATH)lib\$(PlatformName);%(AdditionalLibraryDirectories)`
+-  (right click on project) -> properties  -> Linker -> Input -> Additional dependecies, put here: 
+
+`..\..\..\3rdparty\lib\x64\pthreadVC2.lib;cublas.lib;curand.lib;cudart.lib;%(AdditionalDependencies)`
+- (right click on project) -> properties -> C/C++ -> Preprocessor -> Preprocessor Definitions
+
+`OPENCV;_CRT_SECURE_NO_WARNINGS;GPU;WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)`
+- compile to .exe (X64 & Release) and put .dll`s near with .exe:
+
+`pthreadVC2.dll, pthreadGC2.dll` from yolo-windows\3rdparty\dll\x64
+
+`cusolver64_75.dll, curand64_75.dll, cudart64_75.dll, cublas64_75.dll` - 75 for CUDA 7.5 or your version, from C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\bin
+
+
