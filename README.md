@@ -1,11 +1,15 @@
-# Yolo-Windows
+# Yolo-Windows v1
 # "You Only Look Once: Unified, Real-Time Object Detection"
-A yolo windows version (for object detection)
+Here is a Yolo v1 windows version (for object detection)
+
+You can get **Yolo v2 Windows** version by the link: https://github.com/AlexeyAB/darknet
 
 Contributtors: https://github.com/pjreddie/darknet/graphs/contributors
 
 This repository is forked from: https://github.com/frischzenger/yolo-windows
 Which is forked from Linux-version: https://github.com/pjreddie/darknet
+
+More details: http://pjreddie.com/darknet/yolov1/
 
 ##### Requires: 
 * **MS Visual Studio 2013 (v120)**
@@ -26,7 +30,6 @@ Which is forked from Linux-version: https://github.com/pjreddie/darknet
 
 Others: https://www.youtube.com/channel/UC7ev3hNVkx4DzZ3LO19oebg
 
-More details: http://pjreddie.com/darknet/yolo/
 
 ##### Example of usage in cmd-files:
 * `darknet.cmd` - initialization with 1 GB model yolo.weights & yolo.cfg and get command prompt: enter the jpg-image-filename
