@@ -1,8 +1,9 @@
 # Yolo-Windows v1
+
+## You can get **Yolo v2 Windows** by the link: https://github.com/AlexeyAB/darknet
+
 # "You Only Look Once: Unified, Real-Time Object Detection"
 Here is a Yolo v1 windows version (for object detection)
-
-You can get **Yolo v2 Windows** version by the link: https://github.com/AlexeyAB/darknet
 
 Contributtors: https://github.com/pjreddie/darknet/graphs/contributors
 
